@@ -1,0 +1,6 @@
+echo "vendor/" >> .gitignore
+echo "node_modules/" >> .gitignore
+echo ".env" >> .gitignore
+
+*.sqlite*
+
