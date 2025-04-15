@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RaihanController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\TrendingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +16,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Halaman utama
 Route::get('/', function () {
     return view('welcome');
 });
 
-use App\Http\Controllers\PlaceController;
-Route::get('/places', [PlaceController::class, 'index']);
+// Halaman Tempat Makan oleh Raihan
+Route::get('/places', [RaihanController::class, 'index']);
+
+// Halaman Event Kuliner oleh shifa
+Route::get('/events', [EventController::class, 'index']);
+
+// Halaman Trending oleh Charlie
+Route::get('/trending', [TrendingController::class, 'index']);
+
+use App\Http\Controllers\ListBarangController;
+
+Route::get('/barang', [ListBarangController::class, 'tampilkan']);
+
+
+Route::view('/home', 'home');
+Route::view('/product', 'product');
+Route::view('/about', 'about');
+Route::view('/dashboard', 'dashboard');
+
+Route::get('/public-test', function () {
+    return view('public-test');
+});
+Route::get('/raihan', function () {
+    return view('raihan_view');
+});
+Route::view('/login', 'login');
