@@ -47,3 +47,9 @@ Route::get('/raihan', function () {
     return view('raihan_view');
 });
 Route::view('/login', 'login');
+
+//punya sifa
+Route::get('/Dashboard_view', function () {
+   return view('Dashboard_view');
+   });
+
