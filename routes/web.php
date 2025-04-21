@@ -48,8 +48,24 @@ Route::get('/raihan', function () {
 });
 Route::view('/login', 'login');
 
+<<<<<<< HEAD
 //punya sifa
 Route::get('/Dashboard_view', function () {
    return view('Dashboard_view');
    });
 
+=======
+
+Route::get('/list-product', function () {
+    $data = [
+        ['id' => 1, 'produk' => 'Ikan Cupang'],
+        ['id' => 2, 'produk' => 'Ikan Koi'],
+        ['id' => 3, 'produk' => 'Ikan Arwana']
+    ];
+    return view('list_product', compact('data'));
+});
+
+use App\Http\Controllers\ProductController;
+
+Route::get('/list-product', [ProductController::class, 'index']);
+>>>>>>> 9978b3c (Update praktikum 6 - tambah komponen header dan footer)
