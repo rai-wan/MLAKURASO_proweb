@@ -48,13 +48,13 @@ Route::get('/raihan', function () {
 });
 Route::view('/login', 'login');
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //punya sifa
-Route::get('/Dashboard_view', function () {
-   return view('Dashboard_view');
-   });
+//Route::get('/Dashboard_view', function () {
+//   return view('Dashboard_view');
+  // });
 
-=======
+//=======
 
 Route::get('/list-product', function () {
     $data = [
@@ -68,4 +68,4 @@ Route::get('/list-product', function () {
 use App\Http\Controllers\ProductController;
 
 Route::get('/list-product', [ProductController::class, 'index']);
->>>>>>> 9978b3c (Update praktikum 6 - tambah komponen header dan footer)
+//>>>>>>> 9978b3c (Update praktikum 6 - tambah komponen header dan footer)
