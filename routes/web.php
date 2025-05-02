@@ -69,3 +69,7 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/list-product', [ProductController::class, 'index']);
 //>>>>>>> 9978b3c (Update praktikum 6 - tambah komponen header dan footer)
+Route::get('/home', function () {
+    return view('pages.home');  // pakai titik untuk memanggil file di dalam folder
+});
+
