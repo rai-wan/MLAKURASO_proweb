@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RaihanController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TrendingController;
+use App\Http\Controllers\ListProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/', function () {
 
 // Halaman Tempat Makan oleh Raihan
 Route::get('/places', [RaihanController::class, 'index']);
+
+Route::get('/listproduk', [ListProdukController::class, 'show']);
 
 // Halaman Event Kuliner oleh shifa
 Route::get('/events', [EventController::class, 'index']);
