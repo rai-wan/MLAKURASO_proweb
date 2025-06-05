@@ -6,6 +6,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\TrendingController;
 use App\Http\Controllers\ListProdukController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +23,15 @@ use App\Http\Controllers\ListProdukController;
 Route::get('/', function () {
     return view('welcome');
 });
+// praktikum 9
+Route::get('/produk', [ListProdukController::class, 'show']);
+Route::post('/produk/simpan', [ListProdukController::class, 'simpan'])->name('produk.simpan');
+Route::get('/listproduk', [ListProdukController::class, 'show']);
 
 // Halaman Tempat Makan oleh Raihan
 Route::get('/places', [RaihanController::class, 'index']);
 
-Route::get('/listproduk', [ListProdukController::class, 'show']);
+
 
 // Halaman Event Kuliner oleh shifa
 Route::get('/events', [EventController::class, 'index']);
@@ -51,13 +57,6 @@ Route::get('/raihan', function () {
 });
 Route::view('/login', 'login');
 
-//<<<<<<< HEAD
-//punya sifa
-//Route::get('/Dashboard_view', function () {
-//   return view('Dashboard_view');
-  // });
-
-//=======
 
 Route::get('/list-product', function () {
     $data = [

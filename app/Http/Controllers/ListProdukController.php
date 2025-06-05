@@ -12,4 +12,15 @@ class ListProdukController extends Controller
         $produk = Produk::all();
         return view('list_produk', ['produk' => $produk]);
     }
+
+    public function simpan(Request $request)
+    {
+        $produk = new Produk();
+        $produk->nama = $request->nama;
+        $produk->deskripsi = $request->deskripsi;
+        $produk->harga = $request->harga;
+        $produk->save();
+
+        return redirect('/produk')->with('success', 'Produk berhasil ditambahkan!');
+    }
 }

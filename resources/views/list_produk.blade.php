@@ -12,6 +12,32 @@
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold text-center mb-6 text-indigo-600">📦 Daftar Produk Toko</h1>
 
+        <!-- Form Tambah Produk -->
+        <div class="max-w-xl mx-auto mb-8 p-6 bg-white shadow-md rounded-lg">
+            <form method="POST" action="{{ route('produk.simpan') }}">
+                @csrf
+                <h2 class="text-2xl font-bold mb-4 text-indigo-600">Tambah Produk</h2>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700">Nama Produk</label>
+                    <input type="text" name="nama" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700">Deskripsi</label>
+                    <textarea name="deskripsi" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700">Harga</label>
+                    <input type="number" name="harga" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                </div>
+
+                <button type="submit" class="bg-indigo-500 text-white px-6 py-2 rounded hover:bg-indigo-600">Simpan</button>
+            </form>
+        </div>
+
+        <!-- Tabel Daftar Produk -->
         <div class="overflow-x-auto bg-white shadow-md rounded-lg">
             <table class="min-w-full table-auto border-collapse">
                 <thead class="bg-indigo-500 text-white">
