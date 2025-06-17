@@ -5,73 +5,41 @@ use App\Http\Controllers\RaihanController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TrendingController;
 use App\Http\Controllers\ListProdukController;
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ListBarangController;
 
 // Halaman utama
 Route::get('/', function () {
     return view('welcome');
 });
-// praktikum 9
-Route::get('/produk', [ListProdukController::class, 'show']);
-Route::post('/produk/simpan', [ListProdukController::class, 'simpan'])->name('produk.simpan');
-Route::get('/listproduk', [ListProdukController::class, 'show']);
+
+// Praktikum 9 & 10
+Route::get('/produk', [ListProdukController::class, 'show'])->name('produk.list');
+Route::post('/produk', [ListProdukController::class, 'simpan'])->name('produk.simpan');
+Route::get('/produk/edit/{id}', [ListProdukController::class, 'edit'])->name('produk.edit');
+Route::put('/produk/update/{id}', [ListProdukController::class, 'update'])->name('produk.update');
+Route::delete('/produk/delete/{id}', [ListProdukController::class, 'delete'])->name('produk.delete');
 
 // Halaman Tempat Makan oleh Raihan
 Route::get('/places', [RaihanController::class, 'index']);
 
-
-
-// Halaman Event Kuliner oleh shifa
+// Halaman Event Kuliner oleh Shifa
 Route::get('/events', [EventController::class, 'index']);
 
 // Halaman Trending oleh Charlie
 Route::get('/trending', [TrendingController::class, 'index']);
 
-use App\Http\Controllers\ListBarangController;
-
+// List Barang
 Route::get('/barang', [ListBarangController::class, 'tampilkan']);
 
-
-Route::view('/home', 'home');
+// Static pages
+Route::view('/home', 'pages.home');
 Route::view('/product', 'product');
 Route::view('/about', 'about');
 Route::view('/dashboard', 'dashboard');
-
-Route::get('/public-test', function () {
-    return view('public-test');
-});
-Route::get('/raihan', function () {
-    return view('raihan_view');
-});
 Route::view('/login', 'login');
+Route::view('/public-test', 'public-test');
+Route::view('/raihan', 'raihan_view');
 
-
-Route::get('/list-product', function () {
-    $data = [
-        ['id' => 1, 'produk' => 'Ikan Cupang'],
-        ['id' => 2, 'produk' => 'Ikan Koi'],
-        ['id' => 3, 'produk' => 'Ikan Arwana']
-    ];
-    return view('list_product', compact('data'));
-});
-
-use App\Http\Controllers\ProductController;
-
+// Produk dummy list (optional jika tidak dipakai bisa dihapus)
 Route::get('/list-product', [ProductController::class, 'index']);
-//>>>>>>> 9978b3c (Update praktikum 6 - tambah komponen header dan footer)
-Route::get('/home', function () {
-    return view('pages.home');  // pakai titik untuk memanggil file di dalam folder
-});
-

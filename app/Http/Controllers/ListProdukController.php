@@ -21,6 +21,36 @@ class ListProdukController extends Controller
         $produk->harga = $request->harga;
         $produk->save();
 
-        return redirect('/produk')->with('success', 'Produk berhasil ditambahkan!');
+        return redirect()->route('produk.list')->with('success', 'Produk berhasil ditambahkan!');
+    }
+
+    public function delete($id)
+    {
+        $produk = Produk::find($id);
+        if ($produk) {
+            $produk->delete();
+            return redirect()->route('produk.list')->with('success', 'Produk berhasil dihapus.');
+        }
+        return redirect()->route('produk.list')->with('error', 'Produk tidak ditemukan.');
+    }
+
+    public function edit($id)
+    {
+        $produk = Produk::find($id);
+        return view('edit_produk', compact('produk'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $produk = Produk::find($id);
+        if ($produk) {
+            $produk->update([
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+                'harga' => $request->harga,
+            ]);
+            return redirect()->route('produk.list')->with('success', 'Produk berhasil diperbarui.');
+        }
+        return redirect()->route('produk.list')->with('error', 'Produk tidak ditemukan.');
     }
 }

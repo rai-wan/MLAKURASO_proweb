@@ -68,5 +68,20 @@
         <p class="text-center text-sm text-gray-500 mt-6">Tampilan data produk Laravel x TailwindCSS</p>
     </div>
 
+    <!-- Tambahkan di <thead> kolom Action -->
+<th class="px-6 py-3 text-left">Action</th>
+
+<!-- Tambahkan di <tbody> -->
+<td class="px-6 py-4 space-x-2">
+    <a href="{{ route('produk.edit', $p->id) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">Edit</a>
+
+    <form action="{{ route('produk.delete', $p->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus produk ini?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+    </form>
+</td>
+
+
 </body>
 </html>
